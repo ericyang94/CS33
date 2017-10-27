@@ -1,0 +1,60 @@
+Eric Yang
+304263623
+
+Problem 2.66
+
+int leftmost_one(unsigned x)
+{
+	x = x|(x>>1);
+	x = x|(x>>2);
+	x = x|(x>>4);
+	x = x|(x>>8);
+	x = x|(x>>16);
+	x = x^(x>>1);
+	return x;
+}
+
+
+Problem 2.71
+
+A. This code doesn't take into consideration the sign of the int. 
+	It gets the correct byte but produces an unsigned int.
+
+B.
+int xbyte(packed_t word, int bytenum)
+{
+	int newByte = (word << ((3 - bytenum) << 3)) >> 24;
+	return newByte;
+}
+
+
+Problem 2.72
+
+A. The conditional test always succeeds because size_t is an unsigned int.
+	This causes (maxbytes-sizeof(val)) to be unsigned and always be 
+	greater than or equal to zero.
+ 
+B. 
+void copy_int(int val, void *buf, int maxbytes)
+{
+	if(maxbytes-(int)sizeof(val) >= 0)
+		memcpy(buf, (void *) &val, sizeof(val));
+}
+
+
+Problem 2.81
+
+A. This is not true if x is tmin and y is any value. 
+	Negating tmin would result in tmin again which can't be greater than y.
+
+B. This is true for all values because ((x+y)<<4) gives (16x+16y).
+	(16x+16y+y-x) = (17y+15x).
+
+C. This is true for all values because ~x+~y+1 = (-x-1)+(-y-1)+1 = 
+	-x-y-1 = -(x+y)-1 = ~(x+y)
+
+D. This is true for all values because (ux-uy) = (x-y) since subtraction is the
+	same regardless of type. Changing to unsigned won't change anything.
+
+E. This is true for all values because shifting two right and two left will erase
+	the two right-most bits. This causes ((x>>2)<<2) to be less than x regardless of sign.

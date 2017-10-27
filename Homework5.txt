@@ -1,0 +1,18 @@
+Eric Yang
+304263623
+
+1.
+
+01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 c8 db ff ff e8 85 04 08
+
+2.
+
+A. wallaby
+
+B. platypus
+
+C. dingo
+
+D. koala
+
+E. wombat

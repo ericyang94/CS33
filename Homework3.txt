@@ -1,0 +1,56 @@
+Eric Yang
+304263623
+
+Problem 2.88
+
+A. 
+yes, x and dx will both be rounded the same way.
+
+B.
+no, this does not work if we there is overflow if x or y is TMin
+
+C.
+yes, all the values are between TMin and TMax for int values
+
+D.
+no, if x, y, and z are all TMax for their int values
+
+E.
+no, if x or z equal 0.
+
+
+Problem 2.89
+
+float fpwr2(int x)
+{
+
+	unsigned exp, frac;
+	unsigned u;
+
+	if (x<-149)
+	{
+		exp = 0;
+		frac = 0;
+	}
+	else if (x<-126)
+	{
+		exp = 0;
+		frac = 1<<(x+149);
+	}
+	else if (x<-127)
+	{
+		exp = x+127;
+		frac = 0;
+	}
+	else
+	{
+		exp = 255;
+		frac = 0;
+	}
+	
+	u = exp << 23 | frac;
+
+	return u2f(u);
+}
+			
+
